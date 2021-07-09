@@ -7,7 +7,7 @@ class Pacman {
         this.dir = null
         this.timer = 0
         this.powerPill = false
-        this.rotattion = true
+        this.rotation = true
     }
 
     shouldMove() {
@@ -21,7 +21,7 @@ class Pacman {
         this.timer++
     }
 
-    getNExtMove(objectExist) {
+    getNextMove(objectExist) {
         let nextMovePos = this.pos + this.dir.movement
 
         if (objectExist(nextMovePos, OBJECT_TYPE.WALL) || objectExist(nextMovePos, OBJECT_TYPE.GHOSTLAIR)) {
@@ -48,8 +48,8 @@ class Pacman {
              dir = DIRECTIONS[e.key]
          } else return
 
-        const nextMovePos = this.pos + this.dir.movement
-        if (objectExist(nextMovePos, OBJECT_TYPE.WALL)) return
+        const nextMovePos = this.pos + dir.movement
+        if (objectExist(nextMovePos, OBJECT_TYPE.WALL) || objectExist(nextMovePos, OBJECT_TYPE.GHOSTLAIR)) return
         this.dir = dir
     }
 }
